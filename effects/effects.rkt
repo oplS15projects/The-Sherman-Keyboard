@@ -39,6 +39,7 @@
                              duration-of-note
                              fundamental-freq)
 
+  ;; note will raise amplitude to max-vol and then tone's amplitude gradually lowers.
   (cond ((<= vec-index
              (* attack-setting
                 sample-rate)) (/ vec-index
