@@ -4,7 +4,7 @@
 (require portaudio
          ffi/vector)
 
-(define fundametalFreq 400)
+(define fundametalFreq 200)
 
 (define k1 1)
 
