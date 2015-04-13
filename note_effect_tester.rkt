@@ -31,7 +31,7 @@
                                  durationOfNote
                                  fundametalFreq))
 
-  (define sample1 (real->s16 (* 1 a (sin (+ (* tpisr t (* fundametalFreq k1)) phase1)))))
+  (define sample1 (real->s16 (* .5 a (sin (+ (* tpisr t (* fundametalFreq k1)) phase1)))))
 
   (s16vector-set! vec (* 4 t) sample1)
   (s16vector-set! vec (+ 1 (* 4 t)) sample1)
