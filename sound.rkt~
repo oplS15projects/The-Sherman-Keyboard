@@ -1,7 +1,6 @@
 #lang racket
 
 ;; require libraries
-(require "effects/buttons/volume.rkt")
 (require racket/gui
          rsound
          ffi/vector
@@ -12,7 +11,7 @@
 ;;;;;;;;;;;;;;;;;;;SOUND CODE;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(define pitch  400) ;; C5
+(define pitch  523.253) ;; C5
 (define sample-rate 44100.0) ;; how many times we sample a sound. the higher the more realistic.
 (define tpisr (* 2 pi (/ 1.0 sample-rate))) ;; 2pi * 44100.0, i took this from the racket documents.
 ;;(define volume .05) ;; affects amplitude of sin wave affecting it's loudness.
@@ -40,6 +39,8 @@
           88200
           sample-rate))
 
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;ICONS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -58,23 +59,26 @@
 (define (display-frame frame)
    (send frame show #t))
 
-;(define (effects button-type)
- ;   (cond ((eq? button-type 'volume)
-;
-    ; Make a button in the frame
- ;   (new button% [parent frame]
-  ;               [label "click to play sound."]
-                 ; Callback procedure for a button click:
-   ;              [callback (lambda (button event) ;; executed when a botton is clicked!
-    ;                         (stop) ;; prevent multiple presses from overlapping the tones playing.
-     ;                        (play (create-tone  (/ (send slider get-value) 80))))]))
-      ;     (else 'invalid-button)))
+;; volume slider!
+(define slider (new slider%
+                    [label "volume"]
+                    [parent frame]
+                    [min-value 0]
+                    [max-value 10]
+                    [init-value 5]
+                    [callback (lambda (control event)
+                                (stop)
+                                (play (create-tone (/ (send slider get-value) 80))))]))
 
-(install-vol-slider frame)
-;(effects 'volume)
+; Make a button in the frame
+(new button% [parent frame]
+             [label "click to play sound."]
+             ; Callback procedure for a button click:
+             [callback (lambda (button event) ;; executed when a botton is clicked!
+                         (stop) ;; prevent multiple presses from overlapping the tones playing.
+                         (play (create-tone  (/ (send slider get-value) 80))))])
 
 ; Show the frame by calling its show method
 ;;(send frame show #f)
 (display-frame frame)
-
-
+  
