@@ -2,7 +2,7 @@
 
 ;; require libraries
 (require  "effects/buttons/buttons.rkt"
-          "note-generator.rkt"
+          "effects/note-generator.rkt"
           racket/gui
           rsound
           ffi/vector

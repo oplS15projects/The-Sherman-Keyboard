@@ -1,1 +1,0 @@
-("6.1.1" ("d86d8780e14c99d3015945f46f4306b53d8b1176" . "1f0e64bbeafdef6cdfdab3c8a6ce42dc6a641225") (collects #"racket" #"runtime-config.rkt") #"/home/kevin/The-Sherman-Keyboard/effects/effects.rkt" (collects #"portaudio" #"main.rkt") (collects #"racket" #"main.rkt") (collects #"ffi" #"vector.rkt"))

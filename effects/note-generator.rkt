@@ -1,7 +1,7 @@
 
 #lang racket
 
-(require "effects/effects.rkt")
+(require "effects.rkt")
 (require portaudio
          ffi/vector)
 
