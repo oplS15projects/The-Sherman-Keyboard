@@ -3,7 +3,8 @@
 # keyboard.rkt
 Running this file will produce the synth's GUI, which is now able to play tones created through portaudio. You can 
 use either the mouse or the keyboard to play the synth. Bindings for the keyboard match up to the "default" position 
-on the keyboard (a - f keys for the left half of the keyboard, j - ; for the right half).
+on the keyboard (a - f keys for the left half of the keyboard, j - ; for the right half). It also now has a volume
+slider and an attack slider built in.
 
 # effect-runner.rkt
 This file is an example of the how to use the effects in the the effects folder.
