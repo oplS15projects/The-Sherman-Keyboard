@@ -16,5 +16,4 @@ slider.
 These files are used to define how the notes themselves are actually created.
 
 # additivesynth.rkt
-Running this will produce a tone that shows some of the research that has been done into manipulating the synth audio
-to produce different sounds.
+This file provides a method for generating audio data for all of the fundamental frequencies in the provided range (one octave) with a single procedure call. This procedure (GenerateAudio) takes as its one argument a hash table that contains all of the properties defining some timbre that will be used to generated audio. 
