@@ -1,20 +1,39 @@
 # The-Sherman-Keyboard
 
-# keyboard.rkt
-Running this file will produce the synth's GUI, which is now able to play tones created through portaudio. You can 
-use either the mouse or the keyboard to play the synth. Bindings for the keyboard match up to the "default" position 
-on the keyboard (a - f keys for the left half of the keyboard, j - ; for the right half). It also now has a volume
-slider and an attack slider built in.
+##Authors
+Stuart Tomkins
+Kevin Waco
+Eamon Lightning
 
-# effect-runner.rkt
-This file is an example of the how to use the effects in the the effects folder.
+##Overview
+The emulation of instruments via audio signal processing is a challenging task and racket provides the tools for
+generating and manipulating simple sine waves through several different libraries. These libraries can be used to
+create more complex sounds that emulate the characteristics of real life instruments. The Sherman Keyboard will be a
+synthesizer that will give the user the ability to program their own complex sounds by adjusting different settings
+built into the UI as well as the ability to use interesting pre-configured settings that sound similar to real
+instruments.
 
-# buttons.rkt
-This file contains the definitions for the volume slider, the attack slider, and the currently unimplemented decay
-slider.
+##Screenshot
 
-# effects.rkt and note-generator.rkt
-These files are used to define how the notes themselves are actually created.
 
-# additivesynth.rkt
-This file provides a method for generating audio data for all of the fundamental frequencies in the provided range (one octave) with a single procedure call. This procedure (GenerateAudio) takes as its one argument a hash table that contains all of the properties defining some timbre that will be used to generated audio. 
+##Concepts Demonstrated
+Identify the OPL concepts demonstrated in your project. Be brief. A simple list and example is sufficient. 
+* **Data abstraction** is used to provide access to the elements of the RSS feed.
+* The objects in the OpenGL world are represented with **recursive data structures.**
+* **Symbolic language processing techniques** are used in the parser.
+
+##External Technology and Libraries
+Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).
+
+##Favorite Lines of Code
+
+####Stu:
+
+####Kevin:
+
+####Eamon:
+
+
+#How to Download and Run
+You can click the link to the left to download the zipped folder containing our source code. To run the synthesizer, 
+open the keyboard.rkt file in Dr. Racket, and run it.
