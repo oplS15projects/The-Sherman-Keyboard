@@ -2,8 +2,11 @@
 
 ##Authors
 Stuart Tomkins
+
 Kevin Waco
+
 Eamon Lightning
+
 
 ##Overview
 The emulation of instruments via audio signal processing is a challenging task and racket provides the tools for
