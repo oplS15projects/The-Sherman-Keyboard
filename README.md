@@ -37,6 +37,13 @@ Briefly describe the existing technology you utilized, and how you used it. Prov
 ##Favorite Lines of Code
 
 ####Stu:
+These lines of code are the event handling when the user left clicks a key. When the determine-note-on-click
+procedure is called, it determines what key is pressed on the synth based on the pixel position of the mouse.
+```
+    (define/override (on-event event)
+      (when (send event button-down? 'left)
+        (determine-note-on-click event)))
+```
 
 ####Kevin:
 
