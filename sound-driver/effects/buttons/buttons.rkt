@@ -11,7 +11,7 @@
        [label "volume"]
        [parent parent-frame]
        [min-value 1]
-       [max-value 10]
+       [max-value 50]
        [init-value 5]))
 
 (define (install-attack-slider parent-frame)
@@ -20,7 +20,7 @@
        [label "attack"]
        [parent parent-frame]
        [min-value 1]
-       [max-value 500]
+       [max-value 1000]
        [init-value 232]))
 
 (define (install-decay-slider parent-frame)
