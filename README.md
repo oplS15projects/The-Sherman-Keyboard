@@ -48,23 +48,22 @@ procedure is called, it determines what key is pressed on the synth based on the
 ####Kevin:
 
 ```
-    (define (create-note-hash)
-      (define note-hash (make-hash))
+  (define (create-note-hash)
+    (define note-hash (make-hash))
   
-        (define (init freqs timbre attack max-volume num-of-harmonics)
-          (if (null? freqs)
-            note-hash
-              (begin
-                (hash-set! note-hash (car freqs) (create-tone (car freqs)
-                                                              timbre
-                                                              attack
-                                                              max-volume
-                                                              num-of-harmonics))
-                (init (cdr freqs) timbre attack max-volume num-of-harmonics))))
+    (define (init freqs timbre attack max-volume num-of-harmonics)
+      (if (null? freqs)
+        note-hash
+        (begin (hash-set! note-hash (car freqs) (create-tone (car freqs)
+                                                             timbre
+                                                             attack
+                                                             max-volume
+                                                             num-of-harmonics))
+               (init (cdr freqs) timbre attack max-volume num-of-harmonics))))
         
-        (lambda (cmd)
-          (cond ((eq? cmd 'init) init)
-                ((eq? cmd 'play) (lambda (pitch) (hash-ref note-hash pitch))))))
+    (lambda (cmd)
+      (cond ((eq? cmd 'init) init)
+            ((eq? cmd 'play) (lambda (pitch) (hash-ref note-hash pitch))))))
 ```
 
 ####Eamon:
