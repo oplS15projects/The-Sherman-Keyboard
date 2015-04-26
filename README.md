@@ -28,11 +28,11 @@ Identify the OPL concepts demonstrated in your project. Be brief. A simple list 
 ##External Technology and Libraries
 Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).
 
-![portaudio](http://pkg-build.racket-lang.org/doc/portaudio/index.html)
+[portaudio](http://pkg-build.racket-lang.org/doc/portaudio/index.html)
 
-![ffi/vector](http://docs.racket-lang.org/foreign/homogeneous-vectors.html)
+[ffi/vector](http://docs.racket-lang.org/foreign/homogeneous-vectors.html)
 
-![racket/gui](http://docs.racket-lang.org/gui/index.html?q=racket%20gui)
+[racket/gui](http://docs.racket-lang.org/gui/index.html?q=racket%20gui)
 
 
 ##Favorite Lines of Code
