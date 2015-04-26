@@ -1,30 +1,18 @@
 #lang racket 
 
-(require  "keyboard-utilities.rkt"
-          "effects/buttons/buttons.rkt"
-          "effects/note-generator.rkt"
+(require  "sound-driver/additivesynth.rkt"
+          "sound-driver/effects/buttons/buttons.rkt"
+          "sound-driver/effects/note-generator.rkt"
           racket/gui
-          rsound
           ffi/vector
-          images/icons/control
-          images/icons/style)
+          )
 
-(define notes (make-hash))
-(hash-set! notes "C5" 523.25) 
-(hash-set! notes "D5" 587.33)
-(hash-set! notes "E5" 659.25)
-(hash-set! notes "F5" 698.46)
-(hash-set! notes "G5" 783.99)
-(hash-set! notes "A5" 880.00)
-(hash-set! notes "B5" 987.77)
-(hash-set! notes "C6" 1046.50)
+(define presets (make-hash))
+(hash-set! presets 0 'piano)
+(hash-set! presets 1 'clarinet)
+(hash-set! presets 2 'custom)
 
-(hash-set! notes "C#5" 554.37)
-(hash-set! notes "D#5" 622.25)
-(hash-set! notes "F#5" 739.99)
-(hash-set! notes "G#5" 830.61)
-(hash-set! notes "A#5" 932.33)
-(hash-set! notes "C#6" 1108.73)
+(define current-preset 0)
 
 (define (draw-keyboard dc)
   (send dc draw-line 100 0 100 500)
@@ -49,118 +37,192 @@
     ;; White Keys
     ((or (and (< (send event get-x) 80) (< (send event get-y) 160)) 
          (and (< (send event get-x) 100) (>= (send event get-y) 160))) 
-     (begin ((create-tone (hash-ref notes "C5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 523.25 note-hash)
             (send msg set-label "C"))) ; play C
     ((or (and (> (send event get-x) 120) (< (send event get-x) 180) (< (send event get-y) 160)) 
          (and (> (send event get-x) 100) (< (send event get-x) 200) (>= (send event get-y) 160))) 
-     (begin ((create-tone (hash-ref notes "D5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 587.33 note-hash)
             (send msg set-label "D"))) ; play D
     ((or (and (> (send event get-x) 220) (< (send event get-x) 300) (< (send event get-y) 160)) 
          (and (> (send event get-x) 200) (< (send event get-x) 300) (>= (send event get-y) 160))) 
-     (begin ((create-tone (hash-ref notes "E5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 659.25 note-hash)
             (send msg set-label "E"))) ; play E
     ((or (and (> (send event get-x) 300) (< (send event get-x) 380) (< (send event get-y) 160)) 
          (and (> (send event get-x) 300) (< (send event get-x) 400) (>= (send event get-y) 160))) 
-     (begin ((create-tone (hash-ref notes "F5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 698.46 note-hash)
             (send msg set-label "F"))) ; play F
     ((or (and (> (send event get-x) 420) (< (send event get-x) 480) (< (send event get-y) 160)) 
          (and (> (send event get-x) 400) (< (send event get-x) 500) (>= (send event get-y) 160))) 
-     (begin ((create-tone (hash-ref notes "G5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 783.99 note-hash)
             (send msg set-label "G"))) ; play G
     ((or (and (> (send event get-x) 520) (< (send event get-x) 580) (< (send event get-y) 160)) 
          (and (> (send event get-x) 500) (< (send event get-x) 600) (>= (send event get-y) 160))) 
-     (begin ((create-tone (hash-ref notes "A5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 880.00 note-hash)
             (send msg set-label "A"))) ; play A
     ((or (and (> (send event get-x) 620) (< (send event get-x) 700) (< (send event get-y) 160)) 
          (and (> (send event get-x) 600) (< (send event get-x) 700) (>= (send event get-y) 160))) 
-     (begin ((create-tone (hash-ref notes "B5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 987.77 note-hash)
             (send msg set-label "B"))) ; play B
     ((or (and (> (send event get-x) 700) (< (send event get-x) 780) (< (send event get-y) 160)) 
              (and (> (send event get-x) 700) (>= (send event get-y) 160))) 
-     (begin ((create-tone (hash-ref notes "C6") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 1046.50 note-hash)
             (send msg set-label "C"))) ; play C
     
     ;; Black Keys
     ((and (> (send event get-x) 80) (< (send event get-x) 120) (< (send event get-y) 160)) 
-     (begin ((create-tone (hash-ref notes "C#5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 554.37 note-hash)
             (send msg set-label "C#"))) ; play C#
     ((and (> (send event get-x) 180) (< (send event get-x) 220) (< (send event get-y) 160)) 
-     (begin ((create-tone (hash-ref notes "D#5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 622.25 note-hash)
             (send msg set-label "D#"))) ; play D#
     ((and (> (send event get-x) 380) (< (send event get-x) 420) (< (send event get-y) 160)) 
-     (begin ((create-tone (hash-ref notes "F#5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 739.99 note-hash)
             (send msg set-label "F#"))) ; play F#
     ((and (> (send event get-x) 480) (< (send event get-x) 520) (< (send event get-y) 160)) 
-     (begin ((create-tone (hash-ref notes "G#5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 830.61 note-hash)
             (send msg set-label "G#"))) ; play G#
     ((and (> (send event get-x) 580) (< (send event get-x) 620) (< (send event get-y) 160)) 
-     (begin ((create-tone (hash-ref notes "A#5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 932.33 note-hash)
             (send msg set-label "A#"))) ; play A#
     ((and (> (send event get-x) 780) (< (send event get-y) 160)) 
-     (begin ((create-tone (hash-ref notes "C#6") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 1108.73 note-hash)
             (send msg set-label "C#"))) ; play C#
     ))
 
 (define (determine-note-on-keyboard event)
   (cond ;; White Keys
     ((eqv? (send event get-key-code) #\a) 
-     (begin ((create-tone (hash-ref notes "C5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 523.25 note-hash)
             (send msg set-label "C"))) ;; Play C
     ((eqv? (send event get-key-code) #\s)
-     (begin ((create-tone (hash-ref notes "D5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 587.33 note-hash)
             (send msg set-label "D"))) ;; Play D
     ((eqv? (send event get-key-code) #\d) 
-     (begin ((create-tone (hash-ref notes "E5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 659.25 note-hash)
             (send msg set-label "E"))) ;; Play E
     ((eqv? (send event get-key-code) #\f)
-     (begin ((create-tone (hash-ref notes "F5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 698.46 note-hash)
             (send msg set-label "F"))) ;; Play F
     ((eqv? (send event get-key-code) #\j) 
-     (begin ((create-tone (hash-ref notes "G5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 783.99 note-hash)
             (send msg set-label "G"))) ;; Play G
     ((eqv? (send event get-key-code) #\k) 
-     (begin ((create-tone (hash-ref notes "A5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 880.0 note-hash)
             (send msg set-label "A"))) ;; Play A
     ((eqv? (send event get-key-code) #\l)
-     (begin ((create-tone (hash-ref notes "B5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 987.77 note-hash)
             (send msg set-label "B"))) ;; Play B
     ((eqv? (send event get-key-code) #\;) 
-     (begin ((create-tone (hash-ref notes "C6") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 1046.5 note-hash)
             (send msg set-label "C"))) ;; Play C
     ;; Black Keys
     ((eqv? (send event get-key-code) #\w) 
-     (begin ((create-tone (hash-ref notes "C#5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 554.37 note-hash)
             (send msg set-label "C#"))) ;; Play C#
     ((eqv? (send event get-key-code) #\e) 
-     (begin ((create-tone (hash-ref notes "D#5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 622.25 note-hash)
             (send msg set-label "D#"))) ;; Play D#
     ((eqv? (send event get-key-code) #\u) 
-     (begin ((create-tone (hash-ref notes "F#5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 739.99 note-hash)
             (send msg set-label "F#"))) ;; Play F#
     ((eqv? (send event get-key-code) #\i) 
-     (begin ((create-tone (hash-ref notes "G#5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 830.61 note-hash)
             (send msg set-label "G#"))) ;; Play G#
     ((eqv? (send event get-key-code) #\o)
-     (begin ((create-tone (hash-ref notes "A#5") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 932.33 note-hash)
             (send msg set-label "A#"))) ;; Play A#
     ((eqv? (send event get-key-code) #\[) 
-     (begin ((create-tone (hash-ref notes "C#6") (send attack-slider get-value) (send volume-slider get-value)))
+     (begin (play-note 1108.73 note-hash)
             (send msg set-label "C#"))) ;; Play C#
     ))
 
 ; Make a frame by instantiating the frame% class
-(define frame (new frame% (label "Keyboard")
-                   (width 800) (height 400)
-                   (min-width 800) (min-height 400)
+(define frame (new frame% (label "The Sherman Keyboard")
+                   (width 800) (height 500)
+                   (min-width 800) (min-height 500)
                    (stretchable-height #f) (stretchable-width #f)))
  
 (define volume-slider (install-vol-slider frame))
 (define attack-slider (install-attack-slider frame))
 
+(define freqs (list 523.25 587.33 659.25 698.46 783.99 880.00 987.77 1046.50 554.37 622.25 739.99 830.61 932.33 1108.73))
+
+(define note-hash (create-note-hash))
+
+(init-hash note-hash
+           freqs
+           'piano
+           (send attack-slider get-value)
+           (send volume-slider get-value)
+           4)
+
 ; Make a static text message in the frame
 (define msg (new message% (parent frame)
                           (label "Play a note:")))
-  
+
+(define panel1 (new horizontal-panel% (parent frame) (stretchable-height #f) (min-height 50)))
+
+(new text-field% (parent panel1) (label "k2") (stretchable-width #f) (min-width 120) (init-value "2")
+     (callback 
+              (λ (text event) 
+                (hash-set! customHT "k2" (string->number (send text get-value)))
+                (display (hash-ref customHT "k2"))
+                )))
+
+(new text-field% (parent panel1) (label "k3") (stretchable-width #f) (min-width 120) (init-value "3")
+     (callback 
+              (λ (text event) 
+                (hash-set! customHT "k3" (string->number (send text get-value)))
+                (display (hash-ref customHT "k3"))
+                )))
+
+(new text-field% (parent panel1) (label "k4") (stretchable-width #f) (min-width 120) (init-value "4")
+     (callback 
+              (λ (text event) 
+                (hash-set! customHT "k4" (string->number (send text get-value)))
+                (display (hash-ref customHT "k4"))
+                )))
+
+(define panel2 (new horizontal-panel% (parent frame) (stretchable-height #f) (min-height 50)))
+
+(new text-field% (parent panel2) (label "a2") (stretchable-width #f) (min-width 120) (init-value ".25")
+     (callback 
+              (λ (text event) 
+                (hash-set! customHT "a2" (string->number (send text get-value)))
+                (display (hash-ref customHT "a2"))
+                )))
+(new text-field% (parent panel2) (label "a3") (stretchable-width #f) (min-width 120) (init-value ".15")
+     (callback 
+              (λ (text event) 
+                (hash-set! customHT "a3" (string->number (send text get-value)))
+                (display (hash-ref customHT "a3"))
+                )))
+(new text-field% (parent panel2) (label "a4") (stretchable-width #f) (min-width 120) (init-value ".1")
+     (callback 
+              (λ (text event) 
+                (hash-set! customHT "a4" (string->number (send text get-value)))
+                (display (hash-ref customHT "a4"))
+                )))
+
+(new choice% (parent panel1) (label "Presets") (choices (list "Organ" "Bells" "Custom")) 
+             (style (list 'vertical-label)) (horiz-margin 150) (vert-margin 10)
+             
+             (callback 
+              (λ (choice event) 
+                (set! current-preset (send choice get-selection))
+                )))
+
+(new button% [parent panel2]
+     [label "Apply Settings"]
+     (horiz-margin 140)
+     [callback (lambda (button event)
+                 (init-hash note-hash
+                            freqs
+                            (hash-ref presets current-preset)
+                            (send attack-slider get-value)
+                            (send volume-slider get-value)
+                            4))])
+                        
 ; Derive a new canvas (a drawing window) class to handle events
 (define keyboard%
   (class canvas% ; The base class is canvas%
