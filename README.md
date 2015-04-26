@@ -68,6 +68,19 @@ procedure is called, it determines what key is pressed on the synth based on the
 
 ####Eamon:
 
+```
+
+  (define sample1 (real->s16 (* a1 a (sin (+ (* tpisr t (* fundamentalFreq k1)) phase1)))))
+  (define sample2 (real->s16 (* a2 a (sin (+ (* tpisr t (* fundamentalFreq k2)) phase2)))))
+  (define sample3 (real->s16 (* a3 a (sin (+ (* tpisr t (* fundamentalFreq k3)) phase3)))))
+  (define sample4 (real->s16 (* a4 a (sin (+ (* tpisr t (* fundamentalFreq k4)) phase4)))))
+  (s16vector-set! vec (* 4 t) sample1)
+  (s16vector-set! vec (+ 1 (* 4 t)) sample2)
+  (s16vector-set! vec (+ 2 (* 4 t)) sample3)
+  (s16vector-set! vec (+ 3 (* 4 t)) sample4))
+     
+```
+
 
 #How to Download and Run
 You can click the link to the left to download the zipped folder containing our source code. To run the synthesizer, 
