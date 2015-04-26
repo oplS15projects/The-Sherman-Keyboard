@@ -1,6 +1,6 @@
 # The-Sherman-Keyboard
 
-![screenshot](https://github.com/oplS15projects/The-Sherman-Keyboard/blob/master/screenshot.png)
+<img src=https://raw.githubusercontent.com/oplS15projects/The-Sherman-Keyboard/master/screenshot.png>
 
 ##Authors
 **Stuart Tomkins**
