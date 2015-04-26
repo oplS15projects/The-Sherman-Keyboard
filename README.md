@@ -3,11 +3,11 @@
 ![screenshot](screenshot.png)
 
 ##Authors
-Stuart Tomkins
+**Stuart Tomkins**
 
-Kevin Waco
+**Kevin Waco**
 
-Eamon Lightning
+**Eamon Lightning**
 
 
 ##Overview
@@ -19,10 +19,9 @@ built into the UI as well as the ability to use interesting pre-configured setti
 instruments.
 
 ##Concepts Demonstrated
-Identify the OPL concepts demonstrated in your project. Be brief. A simple list and example is sufficient. 
-* **Data abstraction** is used to provide access to the elements of the RSS feed.
-* The objects in the OpenGL world are represented with **recursive data structures.**
-* **Symbolic language processing techniques** are used in the parser.
+* **Object Oriented Programming** is used in creating different elements of the GUI.
+* **Data Abstraction** is used to create and play complex sound waves.
+* **Recursion** is used to create tones.
 
 ##External Technology and Libraries
 Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).
