@@ -1,5 +1,7 @@
 # The-Sherman-Keyboard
 
+![screenshot](screenshot.png)
+
 ##Authors
 Stuart Tomkins
 
@@ -15,9 +17,6 @@ create more complex sounds that emulate the characteristics of real life instrum
 synthesizer that will give the user the ability to program their own complex sounds by adjusting different settings
 built into the UI as well as the ability to use interesting pre-configured settings that sound similar to real
 instruments.
-
-##Screenshot
-
 
 ##Concepts Demonstrated
 Identify the OPL concepts demonstrated in your project. Be brief. A simple list and example is sufficient. 
