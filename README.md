@@ -16,7 +16,9 @@ generating and manipulating simple sine waves through several different librarie
 
 ##Concepts Demonstrated
  **Object Oriented Programming**: Inheritance is used in creating the different elements of the GUI.
+ 
  **Data Abstraction**: Abstractions away from the core synth driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.
+ 
  **data mutability**, **local state**: Used to store musical notes within hash tables in local frames to keep them persistent in memory.
 
 ##External Technology and Libraries
@@ -80,5 +82,33 @@ This little snippet of code is the heart of the audio generation process. Indivi
 
 
 #How to Download and Run
-You can click the link to the left to download the zipped folder containing our source code. To run the synthesizer, 
-open the keyboard.rkt file in Dr. Racket, and run it.
+
+####Get Racket and project:
+1. Install [Racket](http://racket-lang.org/)
+2. Download this project from [here](http://opls15projects.github.io/The-Sherman-Keyboard/).
+
+####Unpack:
+
+```
+unzip <file-name>.zip
+```
+
+#####or
+
+```
+tar -xvzf <file-name>.tar.gz
+```
+
+####Enter the newly unpacked directory:
+
+```
+cd <unpacked directory>
+```
+
+####Load keyboard.rkt with drracket:
+
+```
+drracket keyboard.rkt 
+```
+
+Once drracket has loaded, select run and the interactive GUI should load. drracket should install any dependencies needed by the project.
