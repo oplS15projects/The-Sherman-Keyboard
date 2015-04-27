@@ -19,18 +19,21 @@ built into the UI as well as the ability to use interesting pre-configured setti
 instruments.
 
 ##Concepts Demonstrated
-* **Object Oriented Programming** is used in creating different elements of the GUI.
-* **Data Abstraction** is used to create and play complex sound waves.
-* **Recursion** is used to create tones.
+* **Object Oriented Programming**: Inheritance is used in creating the different elements of the GUI.
+* **Data Abstraction**: abstractions away from the core driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.
+* **data mutability**, **local state**: Used to initialize hash tables with musical tones within local frames to keep them persistent in memory.
 
 ##External Technology and Libraries
 Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).
 
 [portaudio](http://pkg-build.racket-lang.org/doc/portaudio/index.html)
+        Used to play generated samples created by the synth via the s16vec-play procedure. 
 
 [ffi/vector](http://docs.racket-lang.org/foreign/homogeneous-vectors.html)
+        Used for creating sound samples by storing values into an integer buffer
 
 [racket/gui](http://docs.racket-lang.org/gui/index.html?q=racket%20gui)
+        Used to create the interactive keyboard and various settings that can adjusted.
 
 
 ##Favorite Lines of Code
@@ -45,6 +48,7 @@ procedure is called, it determines what key is pressed on the synth based on the
 ```
 
 ####Kevin:
+This procedure uses the concepts of **assignment** and **local state** to initialize a hash table with musical tones. The procedure *create-note-hash* creates a computational object with time-varying state. When *create-note-hash* is execute a hash object, provided by racket, is created within a local frame within the global environment. The procedure init is defined and then a lambda procedure is returned. The lambda procedure has access to the the procedure *init* and also access to the hash table that was generated. The procedure *init* uses **tail recursion** to fill a hash table by using a list various musical tones. The user can then send **symbolic data** to execute specific operations on the note-hash created. This allows for **abstraction** away from worrying about how the hash is filled.
 
 ```
   (define (create-note-hash)
@@ -66,6 +70,8 @@ procedure is called, it determines what key is pressed on the synth based on the
 ```
 
 ####Eamon:
+
+This little snippet of code is the heart of the audio generation process. Individual sine waves with different frequencies, amplitudes, and phase offsets are generated and added to an audio vector. When the audio vector is played, these individual sine waves are played simultaneously creating the effect of additive synthesis. 
 
 ```
 
