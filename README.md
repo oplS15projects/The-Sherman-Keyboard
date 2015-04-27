@@ -71,6 +71,8 @@ This procedure uses the concepts of **assignment** and **local state** to initia
 
 ####Eamon:
 
+This little snippet of code is the heart of the audio generation process. Individual sine waves with different frequencies, amplitudes, and phase offsets are generated and added to an audio vector. When the audio vector is played, these individual sine waves are played simultaneously creating the effect of additive synthesis. 
+
 ```
 
   (define sample1 (real->s16 (* a1 a (sin (+ (* tpisr t (* fundamentalFreq k1)) phase1)))))
