@@ -20,20 +20,20 @@ instruments.
 
 ##Concepts Demonstrated
 * **Object Oriented Programming**: Inheritance is used in creating the different elements of the GUI.
-* **Data Abstraction**: abstractions away from the core driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.
-* **data mutability**, **local state**: Used to initialize hash tables with musical tones within local frames to keep them persistent in memory.
+* **Data Abstraction**: Abstractions away from the core synth driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.
+* **data mutability**, **local state**: Used to store musical notes within hash tables in local frames to keep them persistent in memory.
 
 ##External Technology and Libraries
 Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).
 
-[portaudio](http://pkg-build.racket-lang.org/doc/portaudio/index.html)
-        Used to play generated samples created by the synth via the s16vec-play procedure. 
+[portaudio](http://pkg-build.racket-lang.org/doc/portaudio/index.html):
+>>Used to play stored audio data via the **s16vec-play** procedure. 
 
-[ffi/vector](http://docs.racket-lang.org/foreign/homogeneous-vectors.html)
-        Used for creating sound samples by storing values into an integer buffer
+[ffi/vector](http://docs.racket-lang.org/foreign/homogeneous-vectors.html):
+>>Used for creating sound samples by storing audio data into 16 bit integer arrays. **make-s16vector** is used to create the arrays and various provided procedures are used to fill and access its contents.
 
-[racket/gui](http://docs.racket-lang.org/gui/index.html?q=racket%20gui)
-        Used to create the interactive keyboard and various settings that can adjusted.
+[racket/gui](http://docs.racket-lang.org/gui/index.html?q=racket%20gui):
+>>Used to create the various elements for the interactive GUI.
 
 
 ##Favorite Lines of Code
