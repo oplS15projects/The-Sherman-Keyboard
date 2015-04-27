@@ -81,32 +81,30 @@ This little snippet of code is the heart of the audio generation process. Indivi
 ```
 
 
-#How to Download and Run
+#How to Install
 
-####Get Racket and project:
-1. Install [Racket](http://racket-lang.org/)
-2. Download this project from [here](http://opls15projects.github.io/The-Sherman-Keyboard/).
+Install [Racket](http://racket-lang.org/)
+
+Download .zip or .tar.gz file for this project from [here](http://opls15projects.github.io/The-Sherman-Keyboard/).
 
 ####Unpack:
 
+####If .zip was downloaded:
 ```
 unzip <file-name>.zip
 ```
 
-#####or
-
+####If .tar.gz was downloaded:
 ```
 tar -xvzf <file-name>.tar.gz
 ```
 
 ####Enter the newly unpacked directory:
-
 ```
 cd <unpacked directory>
 ```
 
 ####Load keyboard.rkt with drracket:
-
 ```
 drracket keyboard.rkt 
 ```
