@@ -27,10 +27,13 @@ instruments.
 Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).
 
 [portaudio](http://pkg-build.racket-lang.org/doc/portaudio/index.html)
+        Used to play generated samples created by the synth via the s16vec-play procedure. 
 
 [ffi/vector](http://docs.racket-lang.org/foreign/homogeneous-vectors.html)
+        Used for creating sound samples by storing values into an integer buffer
 
 [racket/gui](http://docs.racket-lang.org/gui/index.html?q=racket%20gui)
+        Used to create the interactive keyboard and various settings that can adjusted.
 
 
 ##Favorite Lines of Code
@@ -45,6 +48,7 @@ procedure is called, it determines what key is pressed on the synth based on the
 ```
 
 ####Kevin:
+This procedure uses the concepts of **assignment** and **local state** to initialize a hash table with musical tones. The procedure *create-note-hash* creates a computational object with time-varying state. When *create-note-hash* is execute a hash object, provided by racket, is created within a local frame within the global environment. The procedure init is defined and then a lambda procedure is returned. The lambda procedure has access to the the procedure *init* and also access to the hash table that was generated. The procedure *init* uses **tail recursion** to fill a hash table by using a list various musical tones. The user can then send **symbolic data** to execute specific operations on the note-hash created. This allows for **abstraction** away from worrying about how the hash is filled.
 
 ```
   (define (create-note-hash)
