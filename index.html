@@ -54,9 +54,11 @@ generating and manipulating simple sine waves through several different librarie
 <h2>
 <a id="concepts-demonstrated" class="anchor" href="#concepts-demonstrated" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concepts Demonstrated</h2>
 
-<p><strong>Object Oriented Programming</strong>: Inheritance is used in creating the different elements of the GUI.
- <strong>Data Abstraction</strong>: Abstractions away from the core synth driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.
- <strong>data mutability</strong>, <strong>local state</strong>: Used to store musical notes within hash tables in local frames to keep them persistent in memory.</p>
+<p><strong>Object Oriented Programming</strong>: Inheritance is used in creating the different elements of the GUI.</p>
+
+<p><strong>Data Abstraction</strong>: Abstractions away from the core synth driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.</p>
+
+<p><strong>data mutability</strong>, <strong>local state</strong>: Used to store musical notes within hash tables in local frames to keep them persistent in memory.</p>
 
 <h2>
 <a id="external-technology-and-libraries" class="anchor" href="#external-technology-and-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>External Technology and Libraries</h2>
@@ -124,8 +126,40 @@ procedure is called, it determines what key is pressed on the synth based on the
 <h1>
 <a id="how-to-download-and-run" class="anchor" href="#how-to-download-and-run" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Download and Run</h1>
 
-<p>You can click the link to the left to download the zipped folder containing our source code. To run the synthesizer, 
-open the keyboard.rkt file in Dr. Racket, and run it.</p>
+<h4>
+<a id="get-racket-and-project" class="anchor" href="#get-racket-and-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get Racket and project:</h4>
+
+<ol>
+<li>Install <a href="http://racket-lang.org/">Racket</a>
+</li>
+<li>Download this project from <a href="http://opls15projects.github.io/The-Sherman-Keyboard/">here</a>.</li>
+</ol>
+
+<h4>
+<a id="unpack" class="anchor" href="#unpack" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unpack:</h4>
+
+<pre><code>unzip &lt;file-name&gt;.zip
+</code></pre>
+
+<h5>
+<a id="or" class="anchor" href="#or" aria-hidden="true"><span class="octicon octicon-link"></span></a>or</h5>
+
+<pre><code>tar -xvzf &lt;file-name&gt;.tar.gz
+</code></pre>
+
+<h4>
+<a id="enter-the-newly-unpacked-directory" class="anchor" href="#enter-the-newly-unpacked-directory" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enter the newly unpacked directory:</h4>
+
+<pre><code>cd &lt;unpacked directory&gt;
+</code></pre>
+
+<h4>
+<a id="load-keyboardrkt-with-drracket" class="anchor" href="#load-keyboardrkt-with-drracket" aria-hidden="true"><span class="octicon octicon-link"></span></a>Load keyboard.rkt with drracket:</h4>
+
+<pre><code>drracket keyboard.rkt 
+</code></pre>
+
+<p>Once drracket has loaded, select run and the interactive GUI should load. drracket should install any dependencies needed by the project.</p>
         </section>
 
         <footer>
