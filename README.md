@@ -9,7 +9,6 @@
 
 **Eamon Lightning**
 
-
 ##Overview
 The emulation of instruments via audio signal processing is a challenging task and racket provides the tools for
 generating and manipulating simple sine waves through several different libraries. The Sherman Keyboard is a synthesizer that gives the user the ability to program their own complex sounds by adjusting different settings built into the UI as well use pre-configured settings.
@@ -19,7 +18,7 @@ generating and manipulating simple sine waves through several different librarie
  
  **Data Abstraction**: Abstractions away from the core synth driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.
  
- **data mutability**, **local state**: Used to store musical notes within hash tables in local frames to keep them persistent in memory.
+ **Data mutability** and **local state**: Used to store musical notes within hash tables in local frames to keep them persistent in memory.
 
 ##External Technology and Libraries
 
@@ -28,7 +27,6 @@ generating and manipulating simple sine waves through several different librarie
 [ffi/vector](http://docs.racket-lang.org/foreign/homogeneous-vectors.html): Used to create sound samples by storing audio data into 16 bit integer arrays. **make-s16vector** is used to create the arrays and various provided procedures are used to fill and access their contents.
 
 [racket/gui](http://docs.racket-lang.org/gui/index.html?q=racket%20gui): Used to create the various elements of the GUI.
-
 
 ##Favorite Lines of Code
 
@@ -79,7 +77,6 @@ This little snippet of code is the heart of the audio generation process. Indivi
   (s16vector-set! vec (+ 3 (* 4 t)) sample4))
      
 ```
-
 
 #How to Run
 
