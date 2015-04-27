@@ -21,14 +21,11 @@ generating and manipulating simple sine waves through several different librarie
 
 ##External Technology and Libraries
 
-[portaudio](http://pkg-build.racket-lang.org/doc/portaudio/index.html):
->>Used to play stored audio data via the **s16vec-play** procedure. 
+[portaudio](http://pkg-build.racket-lang.org/doc/portaudio/index.html): Used to play stored audio data via the **s16vec-play** procedure. 
 
-[ffi/vector](http://docs.racket-lang.org/foreign/homogeneous-vectors.html):
->>Used for creating sound samples by storing audio data into 16 bit integer arrays. **make-s16vector** is used to create the arrays and various provided procedures are used to fill and access their contents.
+[ffi/vector](http://docs.racket-lang.org/foreign/homogeneous-vectors.html): Used for creating sound samples by storing audio data into 16 bit integer arrays. **make-s16vector** is used to create the arrays and various provided procedures are used to fill and access their contents.
 
-[racket/gui](http://docs.racket-lang.org/gui/index.html?q=racket%20gui):
->>Used to create the various elements of the GUI.
+[racket/gui](http://docs.racket-lang.org/gui/index.html?q=racket%20gui): Used to create the various elements of the GUI.
 
 
 ##Favorite Lines of Code
