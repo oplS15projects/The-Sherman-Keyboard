@@ -81,7 +81,7 @@ This little snippet of code is the heart of the audio generation process. Indivi
 ```
 
 
-#How to Install
+#How to Run
 
 Install [Racket](http://racket-lang.org/)
 
