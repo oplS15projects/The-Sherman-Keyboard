@@ -49,11 +49,7 @@
 <a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h2>
 
 <p>The emulation of instruments via audio signal processing is a challenging task and racket provides the tools for
-generating and manipulating simple sine waves through several different libraries. These libraries can be used to
-create more complex sounds that emulate the characteristics of real life instruments. The Sherman Keyboard will be a
-synthesizer that will give the user the ability to program their own complex sounds by adjusting different settings
-built into the UI as well as the ability to use interesting pre-configured settings that sound similar to real
-instruments.</p>
+generating and manipulating simple sine waves through several different libraries. The Sherman Keyboard is a synthesizer that gives the user the ability to program their own complex sounds by adjusting different settings built into the UI as well use pre-configured settings.</p>
 
 <h2>
 <a id="concepts-demonstrated" class="anchor" href="#concepts-demonstrated" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concepts Demonstrated</h2>
@@ -62,24 +58,19 @@ instruments.</p>
 <li>
 <strong>Object Oriented Programming</strong>: Inheritance is used in creating the different elements of the GUI.</li>
 <li>
-<strong>Data Abstraction</strong>: abstractions away from the core driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.</li>
+<strong>Data Abstraction</strong>: Abstractions away from the core synth driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.</li>
 <li>
-<strong>data mutability</strong>, <strong>local state</strong>: Used to initialize hash tables with musical tones within local frames to keep them persistent in memory.</li>
+<strong>data mutability</strong>, <strong>local state</strong>: Used to store musical notes within hash tables in local frames to keep them persistent in memory.</li>
 </ul>
 
 <h2>
 <a id="external-technology-and-libraries" class="anchor" href="#external-technology-and-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>External Technology and Libraries</h2>
 
-<p>Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).</p>
+<p><a href="http://pkg-build.racket-lang.org/doc/portaudio/index.html">portaudio</a>: Used to play stored audio data via the <strong>s16vec-play</strong> procedure. </p>
 
-<p><a href="http://pkg-build.racket-lang.org/doc/portaudio/index.html">portaudio</a>
-        Used to play generated samples created by the synth via the s16vec-play procedure. </p>
+<p><a href="http://docs.racket-lang.org/foreign/homogeneous-vectors.html">ffi/vector</a>: Used for creating sound samples by storing audio data into 16 bit integer arrays. <strong>make-s16vector</strong> is used to create the arrays and various provided procedures are used to fill and access their contents.</p>
 
-<p><a href="http://docs.racket-lang.org/foreign/homogeneous-vectors.html">ffi/vector</a>
-        Used for creating sound samples by storing values into an integer buffer</p>
-
-<p><a href="http://docs.racket-lang.org/gui/index.html?q=racket%20gui">racket/gui</a>
-        Used to create the interactive keyboard and various settings that can adjusted.</p>
+<p><a href="http://docs.racket-lang.org/gui/index.html?q=racket%20gui">racket/gui</a>: Used to create the various elements of the GUI.</p>
 
 <h2>
 <a id="favorite-lines-of-code" class="anchor" href="#favorite-lines-of-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Favorite Lines of Code</h2>
@@ -98,7 +89,7 @@ procedure is called, it determines what key is pressed on the synth based on the
 <h4>
 <a id="kevin" class="anchor" href="#kevin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kevin:</h4>
 
-<p>This procedure uses the concepts of <strong>assignment</strong> and <strong>local state</strong> to initialize a hash table with musical tones. The procedure <em>create-note-hash</em> creates a computational object with time-varying state. When <em>create-note-hash</em> is execute a hash object, provided by racket, is created within a local frame within the global environment. The procedure init is defined and then a lambda procedure is returned. The lambda procedure has access to the the procedure <em>init</em> and also access to the hash table that was generated. The procedure <em>init</em> uses <strong>tail recursion</strong> to fill a hash table by using a list various musical tones. The user can then send <strong>symbolic data</strong> to execute specific operations on the note-hash created. This allows for <strong>abstraction</strong> away from worrying about how the hash is filled.</p>
+<p>This procedure uses the concepts of <strong>assignment</strong> and <strong>local state</strong> to initialize a hash table with musical tones. The procedure <em>create-note-hash</em> creates a computational object with time-varying state. When <em>create-note-hash</em> is execute a hash object, provided by racket, is created within a local frame within the global environment. The procedure init is defined and then a lambda procedure is returned. The lambda procedure has access to the the procedure <em>init</em> and also access to the hash table that was generated. The procedure <em>init</em> uses <strong>tail recursion</strong> to fill a hash table by using a list various musical tones. The user can then send <strong>symbolic data</strong> to execute specific operations on the note-hash created. This allows for <strong>abstraction</strong> away from how the notes in hash are created and played.</p>
 
 <pre><code>  (define (create-note-hash)
     (define note-hash (make-hash))
@@ -138,7 +129,8 @@ procedure is called, it determines what key is pressed on the synth based on the
 <h1>
 <a id="how-to-download-and-run" class="anchor" href="#how-to-download-and-run" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Download and Run</h1>
 
-<p>You can click the link at the top to download the zipped folder containing our source code. To run the synthesizer, open the keyboard.rkt file in Dr. Racket, and run it.</p>
+<p>You can click the link to the left to download the zipped folder containing our source code. To run the synthesizer, 
+open the keyboard.rkt file in Dr. Racket, and run it.</p>
         </section>
 
         <footer>
