@@ -104,7 +104,7 @@
 ;; frequencies in the fundamentalFrequencies table are accessed, and their
 ;; corresponding complex sounds are generated.
 
-(define (GenerateAudio fundamentalFreq timbre numberOfHarmonics effects)
+(define (GenerateAudio fundamentalFreq timbre numberOfHarmonics max-volume effects)
 
   (set! timbre (get-timbre-hash timbre))
 
@@ -127,10 +127,10 @@
 
      (define a (effects t sample-rate durationOfNote))
 
-     (define sample1 (real->s16 (* a1 a (sin (+ (* tpisr t (* fundamentalFreq k1)) phase1)))))
-     (define sample2 (real->s16 (* a2 a (sin (+ (* tpisr t (* fundamentalFreq k2)) phase2)))))
-     (define sample3 (real->s16 (* a3 a (sin (+ (* tpisr t (* fundamentalFreq k3)) phase3)))))
-     (define sample4 (real->s16 (* a4 a (sin (+ (* tpisr t (* fundamentalFreq k4)) phase4)))))
+     (define sample1 (real->s16 (* max-volume a1 a (sin (+ (* tpisr t (* fundamentalFreq k1)) phase1)))))
+     (define sample2 (real->s16 (* max-volume a2 a (sin (+ (* tpisr t (* fundamentalFreq k2)) phase2)))))
+     (define sample3 (real->s16 (* max-volume a3 a (sin (+ (* tpisr t (* fundamentalFreq k3)) phase3)))))
+     (define sample4 (real->s16 (* max-volume a4 a (sin (+ (* tpisr t (* fundamentalFreq k4)) phase4)))))
      (s16vector-set! vec (* 4 t) sample1)
      (s16vector-set! vec (+ 1 (* 4 t)) sample2)
      (s16vector-set! vec (+ 2 (* 4 t)) sample3)

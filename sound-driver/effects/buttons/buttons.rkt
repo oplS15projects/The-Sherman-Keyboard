@@ -11,7 +11,7 @@
        [label "volume"]
        [parent parent-frame]
        [min-value 1]
-       [max-value 50]
+       [max-value 100]
        [init-value 5]))
 
 (define (install-attack-slider parent-frame)

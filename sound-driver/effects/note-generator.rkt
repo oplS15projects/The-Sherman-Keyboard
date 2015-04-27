@@ -21,7 +21,7 @@
                                              dur-of-note
                                              fund-freq)))
 
-    (GenerateAudio fund-freq timbre num-of-harmonics effects))
+    (GenerateAudio fund-freq timbre num-of-harmonics max-volume effects))
 
 (provide create-tone)
 (provide create-note-hash)
@@ -30,7 +30,7 @@
 
 (define (create-note-hash)
   (define note-hash (make-hash))
-  
+
   (define (init freqs timbre attack max-volume num-of-harmonics)
     (if (null? freqs)
         note-hash
@@ -41,14 +41,14 @@
                                                         max-volume
                                                         num-of-harmonics))
           (init (cdr freqs) timbre attack max-volume num-of-harmonics))))
-    
+
   (lambda (cmd)
     (cond ((eq? cmd 'init) init)
           ((eq? cmd 'play) (lambda (pitch) (hash-ref note-hash pitch))))))
 
 (define (init-hash note-hash freqs timbre attack max-volume num-of-harmonics)
   ((note-hash 'init) freqs timbre attack max-volume num-of-harmonics))
-  
+
 (define (play-note pitch note-hash)
   (((note-hash 'play) pitch)))
 
