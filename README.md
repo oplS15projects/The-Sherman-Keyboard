@@ -15,9 +15,9 @@ The emulation of instruments via audio signal processing is a challenging task a
 generating and manipulating simple sine waves through several different libraries. The Sherman Keyboard is a synthesizer that gives the user the ability to program their own complex sounds by adjusting different settings built into the UI as well use pre-configured settings.
 
 ##Concepts Demonstrated
-* **Object Oriented Programming**: Inheritance is used in creating the different elements of the GUI.
-* **Data Abstraction**: Abstractions away from the core synth driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.
-* **data mutability**, **local state**: Used to store musical notes within hash tables in local frames to keep them persistent in memory.
+ **Object Oriented Programming**: Inheritance is used in creating the different elements of the GUI.
+ **Data Abstraction**: Abstractions away from the core synth driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.
+ **data mutability**, **local state**: Used to store musical notes within hash tables in local frames to keep them persistent in memory.
 
 ##External Technology and Libraries
 
