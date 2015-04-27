@@ -58,14 +58,14 @@ generating and manipulating simple sine waves through several different librarie
 
 <p><strong>Data Abstraction</strong>: Abstractions away from the core synth driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.</p>
 
-<p><strong>data mutability</strong>, <strong>local state</strong>: Used to store musical notes within hash tables in local frames to keep them persistent in memory.</p>
+<p><strong>Data mutability</strong> and <strong>local state</strong>: Used to store musical notes within hash tables in local frames to keep them persistent in memory.</p>
 
 <h2>
 <a id="external-technology-and-libraries" class="anchor" href="#external-technology-and-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>External Technology and Libraries</h2>
 
 <p><a href="http://pkg-build.racket-lang.org/doc/portaudio/index.html">portaudio</a>: Used to play stored audio data via the <strong>s16vec-play</strong> procedure. </p>
 
-<p><a href="http://docs.racket-lang.org/foreign/homogeneous-vectors.html">ffi/vector</a>: Used for creating sound samples by storing audio data into 16 bit integer arrays. <strong>make-s16vector</strong> is used to create the arrays and various provided procedures are used to fill and access their contents.</p>
+<p><a href="http://docs.racket-lang.org/foreign/homogeneous-vectors.html">ffi/vector</a>: Used to create sound samples by storing audio data into 16 bit integer arrays. <strong>make-s16vector</strong> is used to create the arrays and various provided procedures are used to fill and access their contents.</p>
 
 <p><a href="http://docs.racket-lang.org/gui/index.html?q=racket%20gui">racket/gui</a>: Used to create the various elements of the GUI.</p>
 
