@@ -72,11 +72,14 @@ instruments.</p>
 
 <p>Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).</p>
 
-<p><a href="http://pkg-build.racket-lang.org/doc/portaudio/index.html">portaudio</a></p>
+<p><a href="http://pkg-build.racket-lang.org/doc/portaudio/index.html">portaudio</a>
+        Used to play generated samples created by the synth via the s16vec-play procedure. </p>
 
-<p><a href="http://docs.racket-lang.org/foreign/homogeneous-vectors.html">ffi/vector</a></p>
+<p><a href="http://docs.racket-lang.org/foreign/homogeneous-vectors.html">ffi/vector</a>
+        Used for creating sound samples by storing values into an integer buffer</p>
 
-<p><a href="http://docs.racket-lang.org/gui/index.html?q=racket%20gui">racket/gui</a></p>
+<p><a href="http://docs.racket-lang.org/gui/index.html?q=racket%20gui">racket/gui</a>
+        Used to create the interactive keyboard and various settings that can adjusted.</p>
 
 <h2>
 <a id="favorite-lines-of-code" class="anchor" href="#favorite-lines-of-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Favorite Lines of Code</h2>
@@ -94,6 +97,8 @@ procedure is called, it determines what key is pressed on the synth based on the
 
 <h4>
 <a id="kevin" class="anchor" href="#kevin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kevin:</h4>
+
+<p>This procedure uses the concepts of <strong>assignment</strong> and <strong>local state</strong> to initialize a hash table with musical tones. The procedure <em>create-note-hash</em> creates a computational object with time-varying state. When <em>create-note-hash</em> is execute a hash object, provided by racket, is created within a local frame within the global environment. The procedure init is defined and then a lambda procedure is returned. The lambda procedure has access to the the procedure <em>init</em> and also access to the hash table that was generated. The procedure <em>init</em> uses <strong>tail recursion</strong> to fill a hash table by using a list various musical tones. The user can then send <strong>symbolic data</strong> to execute specific operations on the note-hash created. This allows for <strong>abstraction</strong> away from worrying about how the hash is filled.</p>
 
 <pre><code>  (define (create-note-hash)
     (define note-hash (make-hash))
