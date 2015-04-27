@@ -87,8 +87,6 @@ Install [Racket](http://racket-lang.org/)
 
 Download .zip or .tar.gz file for this project from [here](http://opls15projects.github.io/The-Sherman-Keyboard/).
 
-####Unpack:
-
 ####If .zip was downloaded:
 ```
 unzip <file-name>.zip
