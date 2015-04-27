@@ -116,6 +116,8 @@ procedure is called, it determines what key is pressed on the synth based on the
 <h4>
 <a id="eamon" class="anchor" href="#eamon" aria-hidden="true"><span class="octicon octicon-link"></span></a>Eamon:</h4>
 
+<p>This little snippet of code is the heart of the audio generation process. Individual sine waves with different frequencies, amplitudes, and phase offsets are generated and added to an audio vector. When the audio vector is played, these individual sine waves are played simultaneously creating the effect of additive synthesis. </p>
+
 <pre><code>
   (define sample1 (real-&gt;s16 (* a1 a (sin (+ (* tpisr t (* fundamentalFreq k1)) phase1)))))
   (define sample2 (real-&gt;s16 (* a2 a (sin (+ (* tpisr t (* fundamentalFreq k2)) phase2)))))
