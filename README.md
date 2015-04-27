@@ -19,9 +19,9 @@ built into the UI as well as the ability to use interesting pre-configured setti
 instruments.
 
 ##Concepts Demonstrated
-* **Object Oriented Programming** is used in creating different elements of the GUI.
-* **Data Abstraction** is used to create and play complex sound waves.
-* **Recursion** is used to create tones.
+* **Object Oriented Programming**: Inheritance is used in creating the different elements of the GUI.
+* **Data Abstraction**: abstractions away from the core driver (additive-synth.rkt) by the effects processor allows for easy to generate complex sound waves through the GUI.
+* **data mutability**, **local state**: Used to initialize hash tables with musical tones within local frames to keep them persistent in memory.
 
 ##External Technology and Libraries
 Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).
