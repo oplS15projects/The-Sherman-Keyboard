@@ -3,6 +3,7 @@
 
 (provide install-vol-slider)
 (provide install-attack-slider)
+(provide install-decay-slider)
 (require racket/gui)
 
 (define (install-vol-slider parent-frame)
@@ -29,7 +30,7 @@
        [label "decay"]
        [parent parent-frame]
        [min-value 1]
-       [max-value 500]
-       [init-value 232]))
+       [max-value 100]
+       [init-value 30]))
 
 

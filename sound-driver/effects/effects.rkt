@@ -3,55 +3,54 @@
 
 (provide calculate-amplitude)
 
-(define (calc-decay-factor fundamental-freq
-                            max-vol
-                            sample-rate)
+(define (peak-amplitude-pos sample-rate attack)
+  ;; determines where the amplitude should start decreasing
+  (* sample-rate attack))
 
-  ;; this procedure is used to calculate how fast a note should die out
-  (expt (* .5
-           (log (/
-                 (* fundamental-freq
-                    max-vol)
-                 sample-rate)))
-        2))
+(define (attack-factor sample-rate attack)
+  (/ 1 (* attack sample-rate)))
+
+(define (amplitude t sample-rate attack)
+  ;; this procedure calculates amplitude based on the index
+  ;; within the vector of integers representing the audio data.
+  ;; the sample-rate is used because it is the rate in which
+  ;; audio data is read and affects how fast the amplitude should
+  ;; rise to avoid clipping or other abnormalities. attack
+  ;; is a setting that is adjusted to give the effect of a
+  ;; slowly or quickly rising amplitude.
+  (* t (attack-factor sample-rate attack)))
+
+(define (num-of-samples sample-rate dur-of-note)
+  ;; how many samples there are for this tone
+  (* sample-rate dur-of-note))
 
 (define (calc-decayed-amplitude vec-index
-                        max-vol
-                        sample-rate
-                        attack-setting
-                        duration-of-note
-                        decay-factor)
+                                sample-rate
+                                attack-setting
+                                duration-of-note
+                                decay-factor)
 
   ;; this procedure is used to calculate the amplitude a wave should be at a given index.
   (expt (- 1
-           (/ (- vec-index
-                 (* sample-rate
-                    attack-setting))
-              (* sample-rate
-                 (- duration-of-note
-                    attack-setting))))
+           (/ vec-index
+             (num-of-samples sample-rate
+                             duration-of-note)))
         decay-factor))
 
 (define (calculate-amplitude vec-index
                              attack-setting
                              sample-rate
-                             max-vol
                              duration-of-note
-                             fundamental-freq)
+                             decay-factor)
 
   ;; note will raise amplitude to max-vol and then tone's amplitude gradually lowers.
-  (cond ((<= vec-index
-             (* attack-setting
-                sample-rate)) (/ vec-index
-                                 (* sample-rate
-                                    attack-setting)))
+  (cond ((<= vec-index (peak-amplitude-pos attack-setting sample-rate)) (amplitude vec-index
+                                                                                   sample-rate
+                                                                                   attack-setting))
         (else (calc-decayed-amplitude vec-index
-                                      max-vol
                                       sample-rate
                                       attack-setting
                                       duration-of-note
-                                      (calc-decay-factor fundamental-freq
-                                                          max-vol
-                                                          sample-rate)))))
+                                      decay-factor))))
 
 
