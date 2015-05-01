@@ -30,7 +30,30 @@
   (send dc draw-rectangle 380 0 40 160)
   (send dc draw-rectangle 480 0 40 160)
   (send dc draw-rectangle 580 0 40 160)
-  (send dc draw-rectangle 780 0 40 160))
+  (send dc draw-rectangle 780 0 40 160)
+  
+  (send dc set-text-foreground "black")
+  
+  (send dc draw-text "A" 50 250)
+  (send dc draw-text "S" 150 250)
+  (send dc draw-text "D" 250 250)
+  (send dc draw-text "F" 350 250)
+  (send dc draw-text "J" 450 250)
+  (send dc draw-text "K" 550 250)
+  (send dc draw-text "L" 650 250)
+  (send dc draw-text ";" 750 250)
+  
+  (send dc set-text-foreground "white")
+  
+  (send dc draw-text "W" 95 135)
+  (send dc draw-text "E" 197 135)
+  
+  (send dc draw-text "U" 397 135)
+  (send dc draw-text "I" 500 135)
+  (send dc draw-text "O" 595 135)
+  (send dc draw-text "[" 793 135)
+  
+  )
 
 (define (determine-note-on-click event)
   (cond 
