@@ -22,7 +22,7 @@
        [parent parent-frame]
        [min-value 1]
        [max-value 1000]
-       [init-value 232]))
+       [init-value 200]))
 
 (define (install-decay-slider parent-frame)
 
@@ -31,6 +31,6 @@
        [parent parent-frame]
        [min-value 1]
        [max-value 100]
-       [init-value 30]))
+       [init-value 70]))
 
 
