@@ -60,109 +60,81 @@
     ;; White Keys
     ((or (and (< (send event get-x) 80) (< (send event get-y) 160))
          (and (< (send event get-x) 100) (>= (send event get-y) 160)))
-     (begin (play-note 523.25 note-hash)
-            (send msg set-label "C"))) ; play C
+     (play-note 523.25 note-hash)) ; play C
     ((or (and (> (send event get-x) 120) (< (send event get-x) 180) (< (send event get-y) 160))
          (and (> (send event get-x) 100) (< (send event get-x) 200) (>= (send event get-y) 160)))
-     (begin (play-note 587.33 note-hash)
-            (send msg set-label "D"))) ; play D
+     (play-note 587.33 note-hash)) ; play D
     ((or (and (> (send event get-x) 220) (< (send event get-x) 300) (< (send event get-y) 160))
          (and (> (send event get-x) 200) (< (send event get-x) 300) (>= (send event get-y) 160)))
-     (begin (play-note 659.25 note-hash)
-            (send msg set-label "E"))) ; play E
+     (play-note 659.25 note-hash)) ; play E
     ((or (and (> (send event get-x) 300) (< (send event get-x) 380) (< (send event get-y) 160))
          (and (> (send event get-x) 300) (< (send event get-x) 400) (>= (send event get-y) 160)))
-     (begin (play-note 698.46 note-hash)
-            (send msg set-label "F"))) ; play F
+     (play-note 698.46 note-hash)) ; play F
     ((or (and (> (send event get-x) 420) (< (send event get-x) 480) (< (send event get-y) 160))
          (and (> (send event get-x) 400) (< (send event get-x) 500) (>= (send event get-y) 160)))
-     (begin (play-note 783.99 note-hash)
-            (send msg set-label "G"))) ; play G
+     (play-note 783.99 note-hash)) ; play G
     ((or (and (> (send event get-x) 520) (< (send event get-x) 580) (< (send event get-y) 160))
          (and (> (send event get-x) 500) (< (send event get-x) 600) (>= (send event get-y) 160)))
-     (begin (play-note 880.00 note-hash)
-            (send msg set-label "A"))) ; play A
+     (play-note 880.00 note-hash)) ; play A
     ((or (and (> (send event get-x) 620) (< (send event get-x) 700) (< (send event get-y) 160))
          (and (> (send event get-x) 600) (< (send event get-x) 700) (>= (send event get-y) 160)))
-     (begin (play-note 987.77 note-hash)
-            (send msg set-label "B"))) ; play B
+     (play-note 987.77 note-hash)) ; play B
     ((or (and (> (send event get-x) 700) (< (send event get-x) 780) (< (send event get-y) 160))
              (and (> (send event get-x) 700) (>= (send event get-y) 160)))
-     (begin (play-note 1046.50 note-hash)
-            (send msg set-label "C"))) ; play C
+     (play-note 1046.50 note-hash)) ; play C
 
     ;; Black Keys
     ((and (> (send event get-x) 80) (< (send event get-x) 120) (< (send event get-y) 160))
-     (begin (play-note 554.37 note-hash)
-            (send msg set-label "C#"))) ; play C#
+     (play-note 554.37 note-hash)) ; play C#
     ((and (> (send event get-x) 180) (< (send event get-x) 220) (< (send event get-y) 160))
-     (begin (play-note 622.25 note-hash)
-            (send msg set-label "D#"))) ; play D#
+     (play-note 622.25 note-hash)) ; play D#
     ((and (> (send event get-x) 380) (< (send event get-x) 420) (< (send event get-y) 160))
-     (begin (play-note 739.99 note-hash)
-            (send msg set-label "F#"))) ; play F#
+     (play-note 739.99 note-hash)) ; play F#
     ((and (> (send event get-x) 480) (< (send event get-x) 520) (< (send event get-y) 160))
-     (begin (play-note 830.61 note-hash)
-            (send msg set-label "G#"))) ; play G#
+     (play-note 830.61 note-hash)) ; play G#
     ((and (> (send event get-x) 580) (< (send event get-x) 620) (< (send event get-y) 160))
-     (begin (play-note 932.33 note-hash)
-            (send msg set-label "A#"))) ; play A#
+     (play-note 932.33 note-hash)) ; play A#
     ((and (> (send event get-x) 780) (< (send event get-y) 160))
-     (begin (play-note 1108.73 note-hash)
-            (send msg set-label "C#"))) ; play C#
+     (play-note 1108.73 note-hash)) ; play C#
     ))
 
 (define (determine-note-on-keyboard event)
   (cond ;; White Keys
     ((eqv? (send event get-key-code) #\a)
-     (begin (play-note 523.25 note-hash)
-            (send msg set-label "C"))) ;; Play C
+     (play-note 523.25 note-hash)) ;; Play C
     ((eqv? (send event get-key-code) #\s)
-     (begin (play-note 587.33 note-hash)
-            (send msg set-label "D"))) ;; Play D
+     (play-note 587.33 note-hash)) ;; Play D
     ((eqv? (send event get-key-code) #\d)
-     (begin (play-note 659.25 note-hash)
-            (send msg set-label "E"))) ;; Play E
+     (play-note 659.25 note-hash)) ;; Play E
     ((eqv? (send event get-key-code) #\f)
-     (begin (play-note 698.46 note-hash)
-            (send msg set-label "F"))) ;; Play F
+     (play-note 698.46 note-hash)) ;; Play F
     ((eqv? (send event get-key-code) #\j)
-     (begin (play-note 783.99 note-hash)
-            (send msg set-label "G"))) ;; Play G
+     (play-note 783.99 note-hash)) ;; Play G
     ((eqv? (send event get-key-code) #\k)
-     (begin (play-note 880.0 note-hash)
-            (send msg set-label "A"))) ;; Play A
+     (play-note 880.0 note-hash)) ;; Play A
     ((eqv? (send event get-key-code) #\l)
-     (begin (play-note 987.77 note-hash)
-            (send msg set-label "B"))) ;; Play B
+     (play-note 987.77 note-hash)) ;; Play B
     ((eqv? (send event get-key-code) #\;)
-     (begin (play-note 1046.5 note-hash)
-            (send msg set-label "C"))) ;; Play C
+     (play-note 1046.5 note-hash)) ;; Play C
     ;; Black Keys
     ((eqv? (send event get-key-code) #\w)
-     (begin (play-note 554.37 note-hash)
-            (send msg set-label "C#"))) ;; Play C#
+     (play-note 554.37 note-hash)) ;; Play C#
     ((eqv? (send event get-key-code) #\e)
-     (begin (play-note 622.25 note-hash)
-            (send msg set-label "D#"))) ;; Play D#
+     (play-note 622.25 note-hash)) ;; Play D#
     ((eqv? (send event get-key-code) #\u)
-     (begin (play-note 739.99 note-hash)
-            (send msg set-label "F#"))) ;; Play F#
+     (play-note 739.99 note-hash)) ;; Play F#
     ((eqv? (send event get-key-code) #\i)
-     (begin (play-note 830.61 note-hash)
-            (send msg set-label "G#"))) ;; Play G#
+     (play-note 830.61 note-hash)) ;; Play G#
     ((eqv? (send event get-key-code) #\o)
-     (begin (play-note 932.33 note-hash)
-            (send msg set-label "A#"))) ;; Play A#
+     (play-note 932.33 note-hash)) ;; Play A#
     ((eqv? (send event get-key-code) #\[)
-     (begin (play-note 1108.73 note-hash)
-            (send msg set-label "C#"))) ;; Play C#
+     (play-note 1108.73 note-hash)) ;; Play C#
     ))
 
 ; Make a frame by instantiating the frame% class
 (define frame (new frame% (label "The Sherman Keyboard")
-                   (width 800) (height 500)
-                   (min-width 800) (min-height 500)
+                   (width 800) (height 530)
+                   (min-width 800) (min-height 530)
                    (stretchable-height #f) (stretchable-width #f)))
 
 (define volume-slider (install-vol-slider frame))
@@ -180,10 +152,6 @@
            (send volume-slider get-value)
            4
            (send decay-slider get-value))
-
-; Make a static text message in the frame
-(define msg (new message% (parent frame)
-                          (label "Play a note:")))
 
 (define panel1 (new horizontal-panel% (parent frame) (stretchable-height #f) (min-height 50)))
 
