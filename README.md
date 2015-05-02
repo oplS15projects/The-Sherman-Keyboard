@@ -7,7 +7,7 @@
 ##Authors
 **Stuart Tomkins**
 
-**Kevin Waco**
+**Kevin Wacome**
 
 **Eamon Lightning**
 
