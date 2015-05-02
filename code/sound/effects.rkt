@@ -1,5 +1,8 @@
-
 #lang racket
+
+;; this module contains the procedures
+;; for calculating amplitude of tones
+;; based on attack and decay settings.
 
 (provide calculate-amplitude)
 
@@ -8,6 +11,8 @@
   (* sample-rate attack))
 
 (define (attack-factor sample-rate attack)
+  ;; used to determine how fast a note's volume should increase by
+  ;; at a certain index in a vector. this index essentially represents time.
   (/ 1 (* attack sample-rate)))
 
 (define (amplitude t sample-rate attack)
@@ -31,6 +36,9 @@
                                 decay-factor)
 
   ;; this procedure is used to calculate the amplitude a wave should be at a given index.
+  ;; vec-index approaches the value returned by num-of-samples resulting in the base of the
+  ;; exponent to be 0. The decay factor that is set causes the resulting value to approach 0
+  ;; more quickly!
   (expt (- 1
            (/ vec-index
              (num-of-samples sample-rate
