@@ -2,10 +2,7 @@
 
 ;; this file defines the ShermanKeyboard object.
 
-(require  "../sound/additivesynth.rkt"
-          "../sound/note-generator.rkt"
-          "../hash/hash.rkt"
-          "buttons.rkt"
+(require  "buttons.rkt"
           "keyboard.rkt"
           racket/gui
           ffi/vector)

@@ -50,7 +50,7 @@
   (send dc draw-text "O" 595 135)
   (send dc draw-text "[" 793 135))
 
-(define (determine-note-on-click event note-hash)
+(define (determine-note-on-click event)
   (cond
     ;; White Keys
     ((or (and (< (send event get-x) 80) (< (send event get-y) 160))
@@ -93,7 +93,7 @@
      (play-note 1108.73 note-hash)) ; play C#
     ))
 
-(define (determine-note-on-keyboard event note-hash)
+(define (determine-note-on-keyboard event)
   (cond ;; White Keys
     ((eqv? (send event get-key-code) #\a)
      (play-note 523.25 note-hash)) ;; Play C
@@ -132,10 +132,10 @@
     ; Define overriding method to handle mouse events
     (define/override (on-event event)
       (when (send event button-down? 'left)
-        (determine-note-on-click event note-hash)))
+        (determine-note-on-click event)))
     ; Define overriding method to handle keyboard events
     (define/override (on-char event)
-      (determine-note-on-keyboard event note-hash))
+      (determine-note-on-keyboard event))
 
     ; Call the superclass init, passing on all init args
     (super-new)))
