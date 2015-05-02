@@ -34,6 +34,10 @@
           <h1>
 <a id="the-sherman-keyboard" class="anchor" href="#the-sherman-keyboard" aria-hidden="true"><span class="octicon octicon-link"></span></a>The-Sherman-Keyboard</h1>
 
+<h3>
+<a id="website--the-sherman-keyboard" class="anchor" href="#website--the-sherman-keyboard" aria-hidden="true"><span class="octicon octicon-link"></span></a>Website : <a href="http://opls15projects.github.io/The-Sherman-Keyboard/">The Sherman Keyboard</a>
+</h3>
+
 <p><img src="https://raw.githubusercontent.com/oplS15projects/The-Sherman-Keyboard/master/screenshot.png"></p>
 
 <h2>
@@ -88,22 +92,27 @@ procedure is called, it determines what key is pressed on the synth based on the
 
 <p>This procedure uses the concepts of <strong>assignment</strong> and <strong>local state</strong> to initialize a hash table with musical tones. The procedure <em>create-note-hash</em> creates a computational object with time-varying state. When <em>create-note-hash</em> is execute a hash object, provided by racket, is created within a local frame within the global environment. The procedure init is defined and then a lambda procedure is returned. The lambda procedure has access to the the procedure <em>init</em> and also access to the hash table that was generated. The procedure <em>init</em> uses <strong>tail recursion</strong> to fill a hash table by using a list various musical tones. The user can then send <strong>symbolic data</strong> to execute specific operations on the note-hash created. This allows for <strong>abstraction</strong> away from how the notes in hash are created and played.</p>
 
-<pre><code>  (define (create-note-hash)
-    (define note-hash (make-hash))
-
-    (define (init freqs timbre attack max-volume num-of-harmonics)
+<pre><code>(define (create-note-hash)
+  (define note-hash (make-hash))
+    (define (init freqs timbre attack max-volume num-of-harmonics decay-factor)
       (if (null? freqs)
         note-hash
-        (begin (hash-set! note-hash (car freqs) (create-tone (car freqs)
-                                                             timbre
-                                                             attack
-                                                             max-volume
-                                                             num-of-harmonics))
-               (init (cdr freqs) timbre attack max-volume num-of-harmonics))))
+        (begin
+          (hash-set! note-hash (car freqs) (create-tone (car freqs)
+                                                        timbre
+                                                        attack
+                                                        max-volume
+                                                        num-of-harmonics
+                                                        decay-factor))
+          (init (cdr freqs) timbre
+                            attack
+                            max-volume
+                            num-of-harmonics
+                            decay-factor))))
 
-    (lambda (cmd)
-      (cond ((eq? cmd 'init) init)
-            ((eq? cmd 'play) (lambda (pitch) (hash-ref note-hash pitch))))))
+  (lambda (cmd)
+    (cond ((eq? cmd 'init) init)
+          ((eq? cmd 'play) (lambda (pitch) (hash-ref note-hash pitch))))))
 </code></pre>
 
 <h4>
@@ -149,9 +158,9 @@ procedure is called, it determines what key is pressed on the synth based on the
 </code></pre>
 
 <h4>
-<a id="load-keyboardrkt-with-drracket" class="anchor" href="#load-keyboardrkt-with-drracket" aria-hidden="true"><span class="octicon octicon-link"></span></a>Load keyboard.rkt with drracket:</h4>
+<a id="load-mainrkt-with-drracket" class="anchor" href="#load-mainrkt-with-drracket" aria-hidden="true"><span class="octicon octicon-link"></span></a>Load main.rkt with drracket:</h4>
 
-<pre><code>drracket keyboard.rkt 
+<pre><code>drracket main.rkt 
 </code></pre>
 
 <p>Once drracket has loaded, select run and the interactive GUI should load. drracket should install any dependencies needed by the project.</p>
