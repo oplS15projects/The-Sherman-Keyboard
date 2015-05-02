@@ -128,7 +128,7 @@ The Sherman Keyboard offers the user the ability to adjust several settings.
 
 #####presets:
   
-    Select from a list of preset tone options. The custom preset allows users to create their own tones using the k2 through k4 and a2 through a4 text fields. 
+    Select from a list of preset tone options. The custom preset allows users to create their own tones using the k2 through k4 and a2 through a4 input fields. 
     
 #####harmonic settings:
   
