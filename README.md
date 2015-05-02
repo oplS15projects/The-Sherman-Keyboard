@@ -45,22 +45,27 @@ procedure is called, it determines what key is pressed on the synth based on the
 This procedure uses the concepts of **assignment** and **local state** to initialize a hash table with musical tones. The procedure *create-note-hash* creates a computational object with time-varying state. When *create-note-hash* is execute a hash object, provided by racket, is created within a local frame within the global environment. The procedure init is defined and then a lambda procedure is returned. The lambda procedure has access to the the procedure *init* and also access to the hash table that was generated. The procedure *init* uses **tail recursion** to fill a hash table by using a list various musical tones. The user can then send **symbolic data** to execute specific operations on the note-hash created. This allows for **abstraction** away from how the notes in hash are created and played.
 
 ```
-  (define (create-note-hash)
-    (define note-hash (make-hash))
-  
-    (define (init freqs timbre attack max-volume num-of-harmonics)
+(define (create-note-hash)
+  (define note-hash (make-hash))
+    (define (init freqs timbre attack max-volume num-of-harmonics decay-factor)
       (if (null? freqs)
         note-hash
-        (begin (hash-set! note-hash (car freqs) (create-tone (car freqs)
-                                                             timbre
-                                                             attack
-                                                             max-volume
-                                                             num-of-harmonics))
-               (init (cdr freqs) timbre attack max-volume num-of-harmonics))))
-        
-    (lambda (cmd)
-      (cond ((eq? cmd 'init) init)
-            ((eq? cmd 'play) (lambda (pitch) (hash-ref note-hash pitch))))))
+        (begin
+          (hash-set! note-hash (car freqs) (create-tone (car freqs)
+                                                        timbre
+                                                        attack
+                                                        max-volume
+                                                        num-of-harmonics
+                                                        decay-factor))
+          (init (cdr freqs) timbre
+                            attack
+                            max-volume
+                            num-of-harmonics
+                            decay-factor))))
+
+  (lambda (cmd)
+    (cond ((eq? cmd 'init) init)
+          ((eq? cmd 'play) (lambda (pitch) (hash-ref note-hash pitch))))))
 ```
 
 ####Eamon:
