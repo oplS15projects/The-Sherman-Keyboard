@@ -101,9 +101,9 @@ tar -xvzf <file-name>.tar.gz
 cd <unpacked directory>
 ```
 
-####Load keyboard.rkt with drracket:
+####Load main.rkt with drracket:
 ```
-drracket keyboard.rkt 
+drracket main.rkt 
 ```
 
 Once drracket has loaded, select run and the interactive GUI should load. drracket should install any dependencies needed by the project.
