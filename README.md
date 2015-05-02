@@ -7,7 +7,7 @@
 ##Authors
 **Stuart Tomkins**
 
-**Kevin Waco**
+**Kevin Wacome**
 
 **Eamon Lightning**
 
@@ -128,7 +128,7 @@ The Sherman Keyboard offers the user the ability to adjust several settings.
 
 #####presets:
   
-    Select from a list of preset tone options. The custom preset allows users to create their own tones using the k2 through k4 and a2 through a4 text fields. 
+    Select from a list of preset tone options. The custom preset allows users to create their own tones using the k2 through k4 and a2 through a4 input fields. 
     
 #####harmonic settings:
   
@@ -138,3 +138,8 @@ The Sherman Keyboard offers the user the ability to adjust several settings.
     
     The input fields a2 through a4 allow the user to adjust how loud the harmonics are.
     
+#Evaluation of Results
+
+"By the end of this project we will have a working synthesizer that produces complex sounds using sine waves. We will implement a number of features available for the user to interact with that will alter the sounds produced by the synthesizer."
+
+We were able to implement several different options that the user can adjust to create interesting complex sine waves. The interface, based on feedback from the demonstration, seemed fairly intuitive to newcomers. We did not get to implement all of things we had hoped to such as additional sound effects and dynamic envelopes.
