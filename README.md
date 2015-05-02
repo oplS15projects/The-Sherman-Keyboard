@@ -115,7 +115,7 @@ Once drracket has loaded, select run and the interactive GUI should load. drrack
 
 #How To Play!
 
-To play tones either click or press the corresponding key binding on your keyboard. You can even press keys simultaneously to play chords.
+To play tones either click on the keys or press the corresponding key binding on your keyboard. You can even press keys simultaneously to play chords.
 
 The Sherman Keyboard offers the user the ability to adjust several settings.
 
@@ -128,13 +128,13 @@ The Sherman Keyboard offers the user the ability to adjust several settings.
 
 #####presets:
   
-    Select from a list of preset tone options. Select custom to make your own tones using the k2 through k4 and a2 through a4 text fields. 
+    Select from a list of preset tone options. The custom preset allows users to create their own tones using the k2 through k4 and a2 through a4 text fields. 
     
 #####harmonic settings:
   
-    When custom is selected under in the preset box you can enter your own custom tones.
+    When custom is selected in the preset box the user can enter their own custom tones.
     
-    k2 through k4 allows you to set the frequency of the harmonics relative to the fundamental tone.
+    The input fields k2 through k4 allow the user to set the frequency of the harmonics relative to the fundamental tone.
     
-    a2 through a4 allows you to adjust how loud the harmonics are.
+    The input fields a2 through a4 allow the user to adjust how loud the harmonics are.
     
