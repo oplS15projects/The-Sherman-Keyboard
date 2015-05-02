@@ -36,11 +36,11 @@
                                                         max-volume
                                                         num-of-harmonics
                                                         decay-factor))
-                                                        (init (cdr freqs) timbre
-                                                                          attack
-                                                                          max-volume
-                                                                          num-of-harmonics
-                                                                          decay-factor))))
+          (init (cdr freqs) timbre
+                            attack
+                            max-volume
+                            num-of-harmonics
+                            decay-factor))))
 
   (lambda (cmd)
     (cond ((eq? cmd 'init) init)
