@@ -132,7 +132,7 @@ The Sherman Keyboard offers the user the ability to adjust several settings.
     
 #####harmonic settings:
   
-    When custom is selected in the preset box the user can enter their own custom tones.
+    When custom is selected in the preset box, the user can enter their own custom tones.
     
     The input fields k2 through k4 allow the user to set the frequency of the harmonics relative to the fundamental tone.
     
