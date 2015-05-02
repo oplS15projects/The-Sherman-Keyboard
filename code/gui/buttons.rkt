@@ -59,39 +59,32 @@
   (new text-field% (parent (panels 'panel1)) (label "k2") (stretchable-width #f) (min-width 120) (init-value "2")
        (callback
         (λ (text event)
-          (hash-set! customHT "k2" (string->number (send text get-value)))
-          (display (hash-ref customHT "k2")))))
-
+          (hash-set! customHT "k2" (string->number (send text get-value))))))
   (new text-field% (parent (panels 'panel1)) (label "k3") (stretchable-width #f) (min-width 120) (init-value "3")
        (callback
         (λ (text event)
-          (hash-set! customHT "k3" (string->number (send text get-value)))
-          (display (hash-ref customHT "k3")))))
+          (hash-set! customHT "k3" (string->number (send text get-value))))))
 
   (new text-field% (parent (panels 'panel1)) (label "k4") (stretchable-width #f) (min-width 120) (init-value "4")
        (callback
         (λ (text event)
-          (hash-set! customHT "k4" (string->number (send text get-value)))
-          (display (hash-ref customHT "k4")))))
+          (hash-set! customHT "k4" (string->number (send text get-value))))))
 
   ;; install the fields that the user can use to adjust the amplitudes of each harmonic.
   (new text-field% (parent (panels 'panel2)) (label "a2") (stretchable-width #f) (min-width 120) (init-value ".25")
        (callback
         (λ (text event)
-          (hash-set! customHT "a2" (string->number (send text get-value)))
-          (display (hash-ref customHT "a2")))))
+          (hash-set! customHT "a2" (string->number (send text get-value))))))
 
   (new text-field% (parent (panels 'panel2)) (label "a3") (stretchable-width #f) (min-width 120) (init-value ".15")
        (callback
         (λ (text event)
-          (hash-set! customHT "a3" (string->number (send text get-value)))
-          (display (hash-ref customHT "a3")))))
+          (hash-set! customHT "a3" (string->number (send text get-value))))))
 
   (new text-field% (parent (panels 'panel2)) (label "a4") (stretchable-width #f) (min-width 120) (init-value ".1")
        (callback
         (λ (text event)
-          (hash-set! customHT "a4" (string->number (send text get-value)))
-          (display (hash-ref customHT "a4"))))))
+          (hash-set! customHT "a4" (string->number (send text get-value)))))))
 
 (define (add-preset-select panels)
   ;; add list of presets available for selection.
