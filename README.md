@@ -112,3 +112,29 @@ drracket main.rkt
 ```
 
 Once drracket has loaded, select run and the interactive GUI should load. drracket should install any dependencies needed by the project.
+
+#How To Play!
+
+To play tones either click or press the corresponding key binding on your keyboard. You can even press keys simultaneously to play chords.
+
+The Sherman Keyboard offers the user the ability to adjust several settings.
+
+#####sliders:
+    volume: How loud the tone played is. The higher the setting the louder.
+  
+    attack: How rapidly the tone reaches max volume. High attack will sound more like an organ.
+     
+    decay: How quickly the note is cutoff. The higher the decay the longer the note persists.
+
+#####presets:
+  
+    Select from a list of preset tone options. Select custom to make your own tones using the k2 through k4 and a2 through a4 text fields. 
+    
+#####harmonic settings:
+  
+    When custom is selected under in the preset box you can enter your own custom tones.
+    
+    k2 through k4 allows you to set the frequency of the harmonics relative to the fundamental tone.
+    
+    a2 through a4 allows you to adjust how loud the harmonics are.
+    
