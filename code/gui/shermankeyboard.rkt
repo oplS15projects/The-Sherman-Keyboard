@@ -1,5 +1,7 @@
 #lang racket
 
+;; this file defines the ShermanKeyboard object.
+
 (require  "../sound/additivesynth.rkt"
           "../sound/note-generator.rkt"
           "../hash/hash.rkt"
@@ -24,7 +26,7 @@
   ;; Make a canvas that handles events in the frame.
   (define keyboard (make-keyboard frame))
 
-  ;; Show the frame by calling its show method
+  ;; used to display sherman keyboard.
   (lambda (cmd)
     (cond ((eq? cmd 'display) (send frame show #t)))))
 

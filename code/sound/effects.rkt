@@ -17,7 +17,7 @@
 
 (define (amplitude t sample-rate attack)
   ;; this procedure calculates amplitude based on the index
-  ;; within the vector of integers representing the audio data.
+  ;; into the vector of integers representing the audio data.
   ;; the sample-rate is used because it is the rate in which
   ;; audio data is read and affects how fast the amplitude should
   ;; rise to avoid clipping or other abnormalities. attack
@@ -51,7 +51,7 @@
                              duration-of-note
                              decay-factor)
 
-  ;; note will raise amplitude to max-vol and then tone's amplitude gradually lowers.
+  ;; note will raise amplitude to a certain point and then tone's amplitude gradually lowers.
   (cond ((<= vec-index (peak-amplitude-pos attack-setting sample-rate)) (amplitude vec-index
                                                                                    sample-rate
                                                                                    attack-setting))

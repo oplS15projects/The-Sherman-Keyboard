@@ -1,6 +1,9 @@
 
 #lang racket
 
+;; hashing was used in this project for performance reasons.
+;; these hashes are used across several files.
+
 (require "../sound/note-generator.rkt")
 
 (provide note-hash)
@@ -10,7 +13,7 @@
 
 (define (create-preset-hash)
   ;; creates hash table for converting preset selected from gui element to literal
-  ;; this literal is used by a hash table.
+  ;; this literal is used by additive synth when selecting a preset.
   (define presets (make-hash))
   (hash-set! presets 0 'piano)
   (hash-set! presets 1 'clarinet)
@@ -33,7 +36,11 @@
                                                         max-volume
                                                         num-of-harmonics
                                                         decay-factor))
-                                                        (init (cdr freqs) timbre attack max-volume num-of-harmonics decay-factor))))
+                                                        (init (cdr freqs) timbre
+                                                                          attack
+                                                                          max-volume
+                                                                          num-of-harmonics
+                                                                          decay-factor))))
 
   (lambda (cmd)
     (cond ((eq? cmd 'init) init)
@@ -41,7 +48,12 @@
 
 ;; fills hash table with tones  using the desired tone settings.
 (define (fill-hash note-hash freqs timbre attack max-volume num-of-harmonics decay-factor)
-  ((note-hash 'init) freqs timbre attack max-volume num-of-harmonics decay-factor))
+  ((note-hash 'init) freqs
+                     timbre
+                     attack
+                     max-volume
+                     num-of-harmonics
+                     decay-factor))
 
 ;; create hash table to convert preset values selected using gui element to literals.
 (define presets (create-preset-hash))

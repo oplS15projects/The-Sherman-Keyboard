@@ -1,5 +1,8 @@
 #lang racket
 
+;; this procedure is used to add gui elements to the
+;; frame used by ShermanKeyboard object instance.
+
 (require racket/gui
          "../sound/additivesynth.rkt"
          "../hash/hash.rkt")

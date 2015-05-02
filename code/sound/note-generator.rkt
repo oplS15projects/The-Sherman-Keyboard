@@ -1,8 +1,11 @@
 #lang racket
 
-;; this file contains procedure for generating tones
+;; The create-tone procedure is used to generate tones
 ;; based on settings configured by user by making a call
-;; to the additive synth module and for playing the tones.
+;; to the additive synth module.
+
+;; The play-note procedure is used to make playing the notes stored
+;; a little easier!
 
 (require "effects.rkt")
 (require "additivesynth.rkt")

@@ -1,5 +1,9 @@
 #lang racket
 
+;; this file provides the procedures
+;; used to create the keys displayed
+;; and for allowing interactivity.
+
 (require "../sound/note-generator.rkt")
 (require "../hash/hash.rkt")
 (require  racket/gui)
